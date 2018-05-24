@@ -1,6 +1,8 @@
 Escopo:
 
-Um site que faça o controle dos texto redigidos.
+Um site para gerenciar a redaÃ§ao de textos de marketing
+- Empresas poderao criar tasks de textos desejados
+- Redatores poderao dar pick nas tasks e dar commit no texto pronto
 
 Tabelas:
 
@@ -43,8 +45,7 @@ CREATE TABLE COMENTARIO (
 
 Funcionalidades:
 Para empresas:
-- Criar tarefas 
-- Avaliar aplicação
+- Criar tarefas
+- Avaliar aplicaï¿½ï¿½o
 Para usuarios (freelancer):
-- Mandar aplicações
-
+- Mandar aplicaï¿½ï¿½es

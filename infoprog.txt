@@ -1,50 +1,41 @@
 Escopo:
 
-Um site que faça o controle dos texto redigidos.
+Um site que faï¿½a o controle dos texto redigidos.
 
 Tabelas:
 
-CREATE TABLE USUARIO (
-    id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    tipoDeUsuario int NOT NULL,
-    nome varchar(100),
-    telefone varchar(10),
-    email varchar(100)
+CREATE TABLE IF NOT EXISTS WRITEIT.USUARIO (
+    id INT IDENTITY,
+    tipoDeUsuario INT NOT NULL,
+    nome VARCHAR(100),
+    telefone VARCHAR(10),
+    email VARCHAR(100)
 );
 
-CREATE TABLE TAREFA (
-    ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nome varchar(100),
-    idCriador int NOT NULL FOREIGN KEY REFERENCES USUARIO(id),
-    descricao text,
-    dataLimite datetime,
-    situacao int,
+CREATE TABLE IF NOT EXISTS WRITEIT.TAREFA (
+    id INT IDENTITY,
+    nome VARCHAR(100),
+    idCriador INT NOT NULL FOREIGN KEY REFERENCES USUARIO(id),
+    descricao LONGVARCHAR,
+    dataLimite DATETIME,
+    situacao INT,
     valor decimal(10,2)
 );
 
 
-CREATE TABLE APLICACAO (
-    ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    idTarefa int NOT NULL FOREIGN KEY REFERENCES TAREFA(id),
-    idUsuario int NOT NULL FOREIGN KEY REFERENCES USUARIO(id),
-    texto text,
-    dataDeAplicao datetime,
-    observacoes text
+CREATE TABLE IF NOT EXISTS WRITEIT.APLICACAO (
+    id INT IDENTITY,
+    idTarefa INT NOT NULL FOREIGN KEY REFERENCES TAREFA(id),
+    idUsuario INT NOT NULL FOREIGN KEY REFERENCES USUARIO(id),
+    texto LONGVARCHAR,
+    dataDeAplicao DATETIME,
+    observacoes LONGVARCHAR
 );
 
-
-CREATE TABLE COMENTARIO (
-    ID int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    sequencia int NOT NULL PRIMARY KEY,
-    criador int NOT NULL FOREIGN KEY REFERENCES USUARIO(id),
-    descricao text,
-    dataPostagem datetime,
-);
 
 Funcionalidades:
 Para empresas:
-- Criar tarefas 
-- Avaliar aplicação
+- Criar tarefas
+- Avaliar aplicaï¿½ï¿½o
 Para usuarios (freelancer):
-- Mandar aplicações
-
+- Mandar aplicaï¿½ï¿½es

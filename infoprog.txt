@@ -1,6 +1,8 @@
 Escopo:
 
-Um site que fa�a o controle dos texto redigidos.
+Um site para gerenciar a redaçao de textos de marketing
+- Empresas poderao criar tasks de textos desejados
+- Redatores poderao dar pick nas tasks e dar commit no texto pronto
 
 Tabelas:
 

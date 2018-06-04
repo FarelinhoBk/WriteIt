@@ -6,8 +6,11 @@ Um site para gerenciar a redaçao de textos de marketing
 
 Tabelas:
 
+CREATE SCHEMA IF NOT EXISTS  WRITEIT;
 CREATE TABLE IF NOT EXISTS WRITEIT.USUARIO (
     id INT IDENTITY,
+  	username VARCHAR(30) UNIQUE NOT NULL,
+  	senha VARCHAR(30) NOT NULL,
     tipoDeUsuario INT NOT NULL,
     nome VARCHAR(100),
     telefone VARCHAR(10),
@@ -33,6 +36,13 @@ CREATE TABLE IF NOT EXISTS WRITEIT.APLICACAO (
     dataDeAplicao DATETIME,
     observacoes LONGVARCHAR
 );
+
+
+INSERT INTO USUARIO VALUES(0,'Admin','Admin',1,'Admin','Admin','Admin');
+INSERT INTO "WRITEIT"."TAREFA"
+( "NOME", "IDCRIADOR", "DESCRICAO", "DATALIMITE", "SITUACAO", "VALOR" )
+VALUES ('Tarefa Teste', 0 , 'Descricao longa pra teste', DATE '2090-07-15'  ,2 ,1000.10 )
+
 
 
 Funcionalidades:

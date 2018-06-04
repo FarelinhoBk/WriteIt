@@ -12,10 +12,10 @@ public class TarefaDAO extends GenericDao<Tarefa>{
 	private static String insert = "INSERT INTO WRITEIT.TAREFA(ID, NOME, IDCRIADOR, DESCRICAO, DATALIMITE, SITUACAO, VALOR) VALUES (?,?,?,?,?,?,?);";
 	//Altera��o
 	private static String update = "UPDATE WRITEIT.TAREFA " +
-			"SET NOME = ?, IDCRIADOR = ?, DESCRICAO = ?, DATALIMITE = ?, SITUACAO = ?, VALOR = " +
-			"WHERE ID = ?";
+			"SET NOME = ?, IDCRIADOR = ?, DESCRICAO = ?, DATALIMITE = ?, SITUACAO = ?, VALOR = ?" +
+			" WHERE ID = ?";
 	//Dele��o
-	private static String delete = "DELETE FROM WRITEIT.TAREFA WHERE codigo = ?";
+	private static String delete = "DELETE FROM WRITEIT.TAREFA WHERE id = ?";
 	//Leitura
 	private static String ler = "SELECT * FROM WRITEIT.TAREFA WHERE id = ?";
 	//Leitura

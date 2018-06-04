@@ -33,7 +33,7 @@ public abstract class GenericDao<T>{
 			pstmt.setObject(i+1, parametros[i]);
 		}
 		//executa e fecha
-		pstmt.execute();
+		pstmt.executeUpdate();
 		this.closeConnection();
 	}
 
@@ -47,7 +47,7 @@ public abstract class GenericDao<T>{
 		//carrega o id
 		pstmt.setObject(parametros.length + 1, id);
 		//executa e fecha
-		pstmt.execute();
+		pstmt.executeUpdate();
 		this.closeConnection();
 	}
 
@@ -74,18 +74,18 @@ public abstract class GenericDao<T>{
 		}
 
 		//executa e fecha
-		pstmt.execute();
+		pstmt.executeUpdate();
 		this.closeConnection();
 	}
 
 	//Metodos que devem ser implementados
-	public abstract void incluir(T bean) throws Exception;
+	public abstract void incluir(T bean) throws SQLException;
 
-	public abstract void alterar(T bean) throws Exception;
+	public abstract void alterar(T bean) throws SQLException;
 
-	public abstract T ler(int codigo) throws Exception;
+	public abstract T ler(int codigo) throws SQLException;
 
-	public abstract List<T> findAll() throws Exception;
+	public abstract List<T> findAll() throws SQLException;
 
-	public abstract void excluir(int codigo) throws Exception;
+	public abstract void excluir(int codigo) throws SQLException;
 }

@@ -8,6 +8,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
   </head>
   <body>
-    <jsp:include page="WEB-INF/header.tag"/>
+    <jsp:include page="WEB-INF/header.jsp"/>
+    <form method="post" action="ValidLogin">
+      <div>Username:<input type="text" name="username" /></div>
+      <div>Password:<input type="password" name="senha" /></div>
+      <input type="submit" value="Login" />
+    </form>
   </body>
 </html>

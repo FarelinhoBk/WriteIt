@@ -15,7 +15,7 @@ import bean.Aplicao;
 import bean.Usuario;
 import dao.AplicaoDAO;
 
-@WebServlet("/Alterar/tarefa")
+@WebServlet("/Alterar/aplicao")
 public class AlterarAplicao extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

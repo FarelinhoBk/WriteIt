@@ -12,7 +12,7 @@ public class AplicaoDAO extends GenericDao<Aplicao>{
 	private static String insert = "INSERT INTO WRITEIT.APLICAO( IDTAREFA, IDUSUARIO, TEXTO, DATADEAPLICAO, OBSERVACOES) VALUES (?,?,?,?,?);";
 	//Altera��o
 	private static String update = "UPDATE WRITEIT.APLICAO " +
-			" SET IDTAREFA = ?, SET IDUSUARIO = ?, SET TEXTO = ?, SET DATADEAPLICAO = ?, SET OBSERVACOES = ?"+
+			" SET IDTAREFA = ?, SET TEXTO = ?, SET DATADEAPLICAO = ?, SET OBSERVACOES = ?"+
 			" WHERE ID = ?";
 	//Dele��o
 	private static String delete = "DELETE FROM WRITEIT.APLICAO WHERE id = ?";
@@ -41,7 +41,6 @@ public class AplicaoDAO extends GenericDao<Aplicao>{
 			update(update,
 					aplicao.getId(),
 					aplicao.getIdTarefa(),
-					aplicao.getIdUsuario(),
 					aplicao.getTexto(),
 					aplicao.getDataDeAplicao(),
 					aplicao.getObservacoes());

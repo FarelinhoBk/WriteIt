@@ -12,7 +12,7 @@ public class TarefaDAO extends GenericDao<Tarefa>{
 	private static String insert = "INSERT INTO WRITEIT.TAREFA( NOME, IDCRIADOR, DESCRICAO, DATALIMITE, SITUACAO, VALOR) VALUES (?,?,?,?,?,?);";
 	//Altera��o
 	private static String update = "UPDATE WRITEIT.TAREFA " +
-			"SET NOME = ?, IDCRIADOR = ?, DESCRICAO = ?, DATALIMITE = ?, SITUACAO = ?, VALOR = ?" +
+			"SET NOME = ?, DESCRICAO = ?, DATALIMITE = ?, SITUACAO = ?, VALOR = ?" +
 			" WHERE ID = ?";
 	//Dele��o
 	private static String delete = "DELETE FROM WRITEIT.TAREFA WHERE id = ?";
@@ -43,7 +43,6 @@ public class TarefaDAO extends GenericDao<Tarefa>{
 			update(update,
 					tarefa.getId(),
 					tarefa.getNome(),
-					tarefa.getIdCriador(),
 					tarefa.getDescricao(),
 					tarefa.getDataLimite(),
 					tarefa.getSituacao(),

@@ -14,12 +14,15 @@ public class Alterar extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Valida a tarefa
         String entidade = req.getParameter("entidade");
         if(entidade==null)throw new ServletException("Sem entidade");
+        //Valida o usuário
         if(req.getSession().getAttribute("user")==null) {
         	resp.sendRedirect("login");
         	return;
         }
+        //Redireciona para o servlet responsável pela manuteção
         req.getRequestDispatcher("/Alterar/"+entidade).forward(req, resp);
     }
 }

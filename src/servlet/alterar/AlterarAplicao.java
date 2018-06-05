@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Tarefa;
+import bean.Aplicao;
 import bean.Usuario;
-import dao.TarefaDAO;
+import dao.AplicaoDAO;
 
 @WebServlet("/Alterar/tarefa")
-public class AlterarTarefa extends HttpServlet {
+public class AlterarAplicao extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
@@ -29,31 +29,28 @@ public class AlterarTarefa extends HttpServlet {
   			resp.sendRedirect("login");
   			return;
   		}
-      //Verifica se a tarefa é do funcionário
+      //Verifica se a aplicacão é do funcionário
 			try {
-        // Lê a tarefa do banco e valida se o ID é igual ao do funcionário atual
-				if(new TarefaDAO().ler(id).getIdCriador()!=usu.getId()) {
+        // Lê a aplicação do banco e valida se o ID é igual ao do funcionário atual
+				if(new AplicaoDAO().ler(id).getIdUsuario()!=usu.getId()) {
           throw new ServletException("Somente o usuario criador pode alterar esse registro");
         }
 			} catch (SQLException e) {
-				throw new ServletException("Tarefa não existe");
+				throw new ServletException("Aplicação não existe");
 			}
-      //Cria a tarefa
-    	Tarefa t = new Tarefa();
-      t.setId(Integer.parseInt(req.getParameter("id")));
-    	t.setNome(req.getParameter("nome"));
-    	t.setDescricao(req.getParameter("descricao"));
-    	t.setIdCriador(((Usuario) req.getSession().getAttribute("user")).getId());
-    	try {
-        t.setDataLimite( new SimpleDateFormat("yyyy-MM-dd").parse((req.getParameter("dataLimite"))));
-  		} catch (ParseException e) {
+      //Carrega os dados da aplicacão
+      Aplicao a = new Aplicao();
+      a.setidTarefa(Integer.parseInt(req.getParameter("idTarefa")));
+      a.setTexto(req.getParameter("texto"));
+      a.setTexto(req.getParameter("observacoes"));
+      try {
+        a.setdataDeAplicao( new SimpleDateFormat("yyyy-MM-dd").parse((req.getParameter("dataDeAplicacao"))));
+      } catch (ParseException e) {
         e.printStackTrace();
-  		}
-    	t.setSituacao(Integer.parseInt(req.getParameter("situacao")));
-    	t.setValor(Double.parseDouble(req.getParameter("valor")));
+      }
       //Tenta alterar
     	try {
-        new TarefaDAO().alterar(t);
+        new AplicaoDAO().alterar(a);
         resp.sendRedirect("tarefalist.jsp");
         return;
     	} catch (Exception e) {

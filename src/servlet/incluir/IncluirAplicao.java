@@ -10,31 +10,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Tarefa;
+import bean.Aplicao;
 import bean.Usuario;
-import dao.TarefaDAO;
+import dao.AplicaoDAO;
 
-@WebServlet("/Incluir/tarefa")
-public class IncluirTarefa extends HttpServlet {
+@WebServlet("/Incluir/aplicao")
+public class IncluirAplicao extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      //Carrega os dados da tarefa
-    	Tarefa t = new Tarefa();
-    	t.setNome(req.getParameter("nome"));
-    	t.setDescricao(req.getParameter("descricao"));
-    	t.setIdCriador(((Usuario) req.getSession().getAttribute("user")).getId());
+      //Carrega os dados da aplicacão
+    	Aplicao a = new Aplicao();
+    	a.setidTarefa(Integer.parseInt(req.getParameter("idTarefa")));
+    	a.setIdUsuario(((Usuario) req.getSession().getAttribute("user")).getId());
+    	a.setTexto(req.getParameter("texto"));
+    	a.setTexto(req.getParameter("observacoes"));
     	try {
-  			t.setDataLimite( new SimpleDateFormat("yyyy-MM-dd").parse((req.getParameter("dataLimite"))));
+  			a.setdataDeAplicao( new SimpleDateFormat("yyyy-MM-dd").parse((req.getParameter("dataDeAplicacao"))));
   		} catch (ParseException e) {
   			e.printStackTrace();
   		}
-    	t.setSituacao(Integer.parseInt(req.getParameter("situacao")));
-    	t.setValor(Double.parseDouble(req.getParameter("valor")));
       //Tenta incluir
     	try {
-    		new TarefaDAO().incluir(t);
+    		new AplicaoDAO().incluir(a);
             resp.sendRedirect("tarefalist.jsp");
             return;
     	} catch (Exception e) {

@@ -5,7 +5,7 @@ import java.util.Date;
 public class Tarefa {
 	private int id;
 	private String nome;
-	private int idCriador ;
+	private int idCriador;
 	private String descricao;
 	private Date dataLimite;
 	private int situacao;

@@ -8,24 +8,78 @@
 <html>
   <head>
     <title>Tarefas</title>
-    <link rel="stylesheet" href="./tarefa.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css" />
+    <script defer="defer" src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="./tarefalist.css">
   </head>
 <body>
-	<jsp:include page="WEB-INF/header.jsp" />
-	<ul>
-		<li><a class="button" href="Manutencao?entidade=tarefa">Incluir Tarefa</a></li>
+	<jsp:include page="WEB-INF/hdr.jsp" />
+<div>
+
+//TODO: Nao leu CSS, verificar pasta
+<style>
+    #task-create {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+#rectangle {
+  margin: auto;
+  text-align: center;
+  width: 300px;
+  height: 230px;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+}
+</style>
+
+
+//TODO: Criar botoes de edit, delete?
+<a id="task-create" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" href="Manutencao?entidade=tarefa">
+<i class="material-icons">add</i>
+</a>
+</div>
+
+<div id="rectangle">
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Nome</th>
+      <th>Descricao</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
 		<%
 			TarefaDAO dao = new TarefaDAO();
 			List<Tarefa> tarefas = dao.findAll();
 			for (Tarefa t : tarefas) {
 		%>
-		<li><%=t.getNome()%>, <%=t.getDescricao()%>, <%=t.getValor()%><a href="Manutencao?entidade=tarefa&id=<%=t.getId()%>">+</a></li>
+    <tr>
+      <td class="mdl-data-table__cell--non-numeric"><%=t.getNome()%></td>
+      <td><%=t.getDescricao()%></td>
+      <td><%=t.getValor()%></td>
+    </tr>
 		<%
 			}
 		%>
-	</ul>
+  </tbody>
+</table>
+</div>
+
+
+
+
 </body>
 </html>

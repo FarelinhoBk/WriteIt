@@ -9,7 +9,7 @@ import bean.Tarefa;
 
 public class TarefaDAO extends GenericDao<Tarefa>{
 	//Inclus�o
-	private static String insert = "INSERT INTO WRITEIT.TAREFA(ID, NOME, IDCRIADOR, DESCRICAO, DATALIMITE, SITUACAO, VALOR) VALUES (?,?,?,?,?,?,?);";
+	private static String insert = "INSERT INTO WRITEIT.TAREFA( NOME, IDCRIADOR, DESCRICAO, DATALIMITE, SITUACAO, VALOR) VALUES (?,?,?,?,?,?);";
 	//Altera��o
 	private static String update = "UPDATE WRITEIT.TAREFA " +
 			"SET NOME = ?, IDCRIADOR = ?, DESCRICAO = ?, DATALIMITE = ?, SITUACAO = ?, VALOR = ?" +
@@ -25,7 +25,6 @@ public class TarefaDAO extends GenericDao<Tarefa>{
 	public void incluir(Tarefa tarefa) throws SQLException {
 		try {
 			insert(insert,
-					tarefa.getId(),
 					tarefa.getNome(),
 					tarefa.getIdCriador(),
 					tarefa.getDescricao(),

@@ -32,9 +32,5 @@ public class ValidLogin extends HttpServlet {
           req.setAttribute("error", "Usuario e/ou senha inv�lido");
           req.getRequestDispatcher("/login.jsp").forward(req, resp);
         }
-
-
-
-
     }
 }

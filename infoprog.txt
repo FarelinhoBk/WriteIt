@@ -38,7 +38,13 @@ CREATE TABLE IF NOT EXISTS WRITEIT.APLICACAO (
 );
 
 
-INSERT INTO USUARIO VALUES(0,'Admin','Admin',1,'Admin','Admin','Admin');
+INSERT INTO WRITEIT.USUARIO VALUES(0,'Admin','Admin',1,'Admin','Admin','Admin');
+INSERT INTO WRITEIT.USUARIO VALUES(1,'bk','bk',1,'Bruno Krugel','','bk@gmail.com');
+INSERT INTO WRITEIT.USUARIO VALUES(2,'narnia','narnia',1,'Gabriel Fernandes','','bk@gmail.com');
+INSERT INTO WRITEIT.USUARIO VALUES(3,'rech','rech',2,'Rech','','Rech@gmail.com');
+INSERT INTO WRITEIT.USUARIO VALUES(4,'sap','sap',2,'Sap','','SAP@gmail.com');
+
+
 INSERT INTO "WRITEIT"."TAREFA"
 ( "NOME", "IDCRIADOR", "DESCRICAO", "DATALIMITE", "SITUACAO", "VALOR" )
 VALUES ('Tarefa Teste', 0 , 'Descricao longa pra teste', DATE '2090-07-15'  ,2 ,1000.10 )

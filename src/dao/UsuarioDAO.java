@@ -9,7 +9,7 @@ import bean.Usuario;
 
 public class UsuarioDAO extends GenericDao<Usuario>{
 	//Inclus�o
-	private static String insert = "INSERT INTO WRITEIT.USUARIO(ID, USERNAME, SENHA, TIPODEUSUARIO, NOME, TELEFONE, EMAIL) VALUES (?,?,?,?,?,?,?);";
+	private static String insert = "INSERT INTO WRITEIT.USUARIO(USERNAME, SENHA, TIPODEUSUARIO, NOME, TELEFONE, EMAIL) VALUES (?,?,?,?,?,?);";
 	//Altera��o
 	private static String update = "UPDATE WRITEIT.USUARIO " +
 			"SET USERNAME = ?, SET SENHA = ?, SET TIPODEUSUARIO = ?, SET NOME = ?, SET TELEFONE = ?, SET EMAIL = ?"+
@@ -29,7 +29,6 @@ public class UsuarioDAO extends GenericDao<Usuario>{
 	public void incluir(Usuario usuario) throws SQLException {
 		try {
 			insert(insert,
-					usuario.getId(),
 					usuario.getUsername(),
 					usuario.getSenha(),
 					usuario.getTipoDeUsuario(),

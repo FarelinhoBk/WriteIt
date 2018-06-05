@@ -18,7 +18,7 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//Se ja tem usuário manda pra pagina inicial
        if (req.getSession().getAttribute("user")==null) {
-    	   resp.sendRedirect("login.jsp");
+           req.getRequestDispatcher("login.jsp").forward(req, resp);
        } else {
     	   resp.sendRedirect("index.jsp");
        }

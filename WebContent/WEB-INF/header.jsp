@@ -17,14 +17,17 @@ try {
       <li class="nav-item">
         <a class="nav-link" href="index.jsp">Home</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tarefalist.jsp">Tarefas</a>
+      </li>
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item">
         <% if(usu==null) {%>
           <a class="nav-link active" href="login">Login</a>
-	  	  <% } else { %>
+	    <% } else { %>
       	  <a class="nav-link active" href="usurio.jsp"><%=usu.getNome()%></a>
-		    <% }%>
+		<% }%>
       </li>
     </ul>
   </div>

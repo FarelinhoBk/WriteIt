@@ -53,5 +53,4 @@ public class Tarefa {
 	public void setValor(double valor) {
 		this.valor = valor;
 	}
-
 };

@@ -16,13 +16,13 @@
 <body>
 	<jsp:include page="WEB-INF/header.jsp" />
 	<ul>
-		<li><a class="button" href="manutencaoTarefa.jsp">Incluir Tarefa</a></li>
+		<li><a class="button" href="Manutencao?entidade=tarefa">Incluir Tarefa</a></li>
 		<%
 			TarefaDAO dao = new TarefaDAO();
 			List<Tarefa> tarefas = dao.findAll();
 			for (Tarefa t : tarefas) {
 		%>
-		<li><%=t.getNome()%>, <%=t.getDescricao()%>, <%=t.getValor()%><a href="manutencaoTarefa.jsp?id=<%=t.getId()%>">+</a></li>
+		<li><%=t.getNome()%>, <%=t.getDescricao()%>, <%=t.getValor()%><a href="Manutencao?entidade=tarefa&id=<%=t.getId()%>">+</a></li>
 		<%
 			}
 		%>

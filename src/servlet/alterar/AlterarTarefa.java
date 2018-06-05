@@ -1,6 +1,7 @@
 package servlet.alterar;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -30,14 +31,14 @@ public class AlterarTarefa extends HttpServlet {
   			return;
   		}
       //Verifica se a tarefa é do funcionário
-			try {
-        // Lê a tarefa do banco e valida se o ID é igual ao do funcionário atual
-				if(new TarefaDAO().ler(id).getIdCriador()!=usu.getId()) {
-          throw new ServletException("Somente o usuario criador pode alterar esse registro");
-        }
-			} catch (SQLException e) {
-				throw new ServletException("Tarefa não existe");
-			}
+  		try {
+  			// Lê a tarefa do banco e valida se o ID é igual ao do funcionário atual
+  			if(new TarefaDAO().ler(id).getIdCriador()!=usu.getId()) {
+  				throw new ServletException("Somente o usuario criador pode alterar esse registro");
+  			}
+  		} catch (SQLException e) {
+  			throw new ServletException("Tarefa não existe");
+  		}
       //Cria a tarefa
     	Tarefa t = new Tarefa();
       t.setId(Integer.parseInt(req.getParameter("id")));

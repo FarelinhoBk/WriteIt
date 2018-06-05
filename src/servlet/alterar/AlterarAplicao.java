@@ -1,6 +1,7 @@
 package servlet.alterar;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -29,22 +30,22 @@ public class AlterarAplicao extends HttpServlet {
   			resp.sendRedirect("login");
   			return;
   		}
-      //Verifica se a aplicacão é do funcionário
-			try {
-        // Lê a aplicação do banco e valida se o ID é igual ao do funcionário atual
-				if(new AplicaoDAO().ler(id).getIdUsuario()!=usu.getId()) {
-          throw new ServletException("Somente o usuario criador pode alterar esse registro");
-        }
-			} catch (SQLException e) {
-				throw new ServletException("Aplicação não existe");
-			}
+  		//Verifica se a aplicacão é do funcionário
+  		try {
+  			// Lê a aplicação do banco e valida se o ID é igual ao do funcionário atual
+  			if(new AplicaoDAO().ler(id).getIdUsuario()!=usu.getId()) {
+  				throw new ServletException("Somente o usuario criador pode alterar esse registro");
+  			}
+  		} catch (SQLException e) {
+  			throw new ServletException("Aplicação não existe");
+  		}
       //Carrega os dados da aplicacão
       Aplicao a = new Aplicao();
-      a.setidTarefa(Integer.parseInt(req.getParameter("idTarefa")));
+      a.setIdTarefa(Integer.parseInt(req.getParameter("idTarefa")));
       a.setTexto(req.getParameter("texto"));
       a.setTexto(req.getParameter("observacoes"));
       try {
-        a.setdataDeAplicao( new SimpleDateFormat("yyyy-MM-dd").parse((req.getParameter("dataDeAplicacao"))));
+        a.setDataDeAplicao( new SimpleDateFormat("yyyy-MM-dd").parse((req.getParameter("dataDeAplicacao"))));
       } catch (ParseException e) {
         e.printStackTrace();
       }

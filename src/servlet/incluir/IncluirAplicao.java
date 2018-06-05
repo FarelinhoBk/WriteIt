@@ -22,12 +22,12 @@ public class IncluirAplicao extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
       //Carrega os dados da aplicacão
     	Aplicao a = new Aplicao();
-    	a.setidTarefa(Integer.parseInt(req.getParameter("idTarefa")));
+    	a.setIdTarefa(Integer.parseInt(req.getParameter("idTarefa")));
     	a.setIdUsuario(((Usuario) req.getSession().getAttribute("user")).getId());
     	a.setTexto(req.getParameter("texto"));
     	a.setTexto(req.getParameter("observacoes"));
     	try {
-  			a.setdataDeAplicao( new SimpleDateFormat("yyyy-MM-dd").parse((req.getParameter("dataDeAplicacao"))));
+  			a.setDataDeAplicao( new SimpleDateFormat("yyyy-MM-dd").parse((req.getParameter("dataDeAplicacao"))));
   		} catch (ParseException e) {
   			e.printStackTrace();
   		}

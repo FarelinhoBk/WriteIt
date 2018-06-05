@@ -16,6 +16,6 @@
   <body>
     <jsp:include page="WEB-INF/header.jsp"/>
     <input type="text" size="32" value="1000" name="fee" />
-    <%= request.getParameter("id") %></b>!
+    <b><%= request.getParameter("id") %></b>!
   </body>
 </html>

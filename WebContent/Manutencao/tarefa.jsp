@@ -77,15 +77,11 @@
 <!-- Simple Select -->
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <select class="mdl-textfield__input" id="situacao" name="situacao" value="<%=t==null?"1":t.getSituacao()%>">
-      <option></option>
       <option value="1">Aberta</option>
       <option value="2">Encerrada</option>
     </select>
     <label class="mdl-textfield__label" for="situacao">Situacao</label>
   </div>
-
-
-
 			<%} else {
 //Cria componente com valor default 1 - Aberto
 	%>
@@ -95,7 +91,7 @@
 <%if(!inclusao){ %>
 			<span style="float:left">
 <% } %>
-				<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Criar" />
+				<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="<%=inclusao?"Criar":"Alterar"%>" />
 <%if(!inclusao){ %>
 			</span>
 <% } %>

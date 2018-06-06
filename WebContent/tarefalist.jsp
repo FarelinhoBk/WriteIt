@@ -32,16 +32,19 @@
 	</div>
 	<br />
 	<br />
-	<div>
+
 		<%
 			//Se for empresa adiciona linha para incluir
-			if (usu.isEmpresa()) {
-		%>
-		<a id="task-create" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" href="Manutencao?entidade=tarefa"> <i class="material-icons">add</i> </a>
-	</div>
-	<%
-		}
-	%>
+			if (usu.isEmpresa()) {%>
+<div class="cantinho">
+				<div class= "mdl-tooltip mdl-tooltip--top" data-mdl-for="Tooltip">
+					Criar tarefa
+				</div>
+			<div id="Tooltip">
+				<a id="task-create" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" href="Manutencao?entidade=tarefa"> <i class="material-icons">add</i> </a>
+			</div>
+</div>
+	<%}%>
 
 	<%
 		TarefaDAO dao = new TarefaDAO();

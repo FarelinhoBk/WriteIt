@@ -25,7 +25,7 @@
 <html>
 <head>
 <title>Manutencao - Tarefa</title>
-<link rel="stylesheet" type="text/css" href="aplicacao.css" />
+<link rel="stylesheet" type="text/css" href="aplicao.css" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css" />
 <script defer="defer" src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -34,21 +34,40 @@
 	<div>
 		<jsp:include page="/WEB-INF/hdr.jsp" />
 	</div>
+
+
+<style>
+#rectangle {
+  margin: auto;
+  text-align: center;
+  width: 300px;
+  height: 230px;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+}
+</style>
+
 	<form method="post" action=<%=inclusao?"Incluir":"Alterar"%>>
 		<div id="rectangle">
-			<input type="hidden" value="aplicacao" name="entidade" /> <input
-				type="hidden" value=<%=a==null?"0":a.getId()%> name="id" /> <input
-				type="hidden" value=<%=a==null?idTarefa:a.getIdTarefa()%>
-				name="idTarefa" />
-			<div>
-				Texto:<input type="text" name="texto"
-					value="<%=a==null?"":a.getTexto()%>" required />
+
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="texto" value="<%=a==null?"":a.getTexto()%>" required>
+				<label class="mdl-textfield__label" for="texto">Texto</label>
 			</div>
-			<div>
-				Observacao:<input type="text" name="observacoes"
-					value="<%=a==null?"":a.getObservacoes()%>" required />
+
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<input class="mdl-textfield__input" type="text" name="observacoes" value="<%=a==null?"":a.getObservacoes()%>" required >
+				<label class="mdl-textfield__label" for="observacoes">Observacoes</label>
 			</div>
-			<input type="submit" />
+
+			<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Enviar" />
 		</div>
 	</form>
 	<%

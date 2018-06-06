@@ -20,18 +20,35 @@
 <head>
 <title>Manutencao - Tarefa</title>
 <link rel="stylesheet" type="text/css" href="tarefa.css" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet"
-	href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css" />
+<link rel="stylesheet"	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
 <script defer="defer" src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<link rel="stylesheet" href="path_to/getmdl-select/getmdl-select.min.css">
+<script defer src="path_to/getmdl-select/getmdl-select.min.js"></script>
 </head>
 <body>
 	<div>
 		<jsp:include page="/WEB-INF/hdr.jsp" />
 	</div>
-	<form method="post" action=<%=inclusao?"Incluir":"Alterar"%>>
+
+<style>
+#rectangle {
+  margin: auto;
+  text-align: center;
+  width: 300px;
+  height: 230px;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+}
+</style>
 		<div id="rectangle">
+	<form method="post" action=<%=inclusao?"Incluir":"Alterar"%>>
 			<input type="hidden" value="tarefa" name="entidade" /> <input
 				type="hidden" value=<%=t==null?"":t.getId()%> name="id" />
 			<div
@@ -59,32 +76,43 @@
 			<%
     // Se nao esta em inclusao
     if(!inclusao){ %>
-			<div>
-				Situacao:<select name="situacao"
-					value="<%=t==null?"1":t.getSituacao()%>">
-					<option value=1>aberta</option>
-					<option value=2>encerrada</option>
-				</select>
-			</div>
+<!-- Simple Select -->
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <select class="mdl-textfield__input" id="situacao" name="situacao" value="<%=t==null?"1":t.getSituacao()%>">
+      <option></option>
+      <option value="1">Aberta</option>
+      <option value="2">Encerrada</option>
+    </select>
+    <label class="mdl-textfield__label" for="situacao">Situacao</label>
+  </div>
+
+
+
 			<%} else {
 //Cria componente com valor default 1 - Aberto
 	%>
 			<input type="hidden" value="1" name="situacao" />
 			<% } %>
-			<input
-				class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-				type="submit" value="Criar" />
-		</div>
+			<br />
+<%if(!inclusao){ %>
+			<span style="float:left">
+<% } %>
+				<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Criar" />
+<%if(!inclusao){ %>
+			</span>
+<% } %>
 	</form>
 	<%
 // Se nao esta em inclusao
     if(!inclusao){ %>
 	<form method="post" action="Deletar">
-		<input type="hidden" value="tarefa" name="entidade" /> <input
-			type="hidden" value=<%=t==null?"":t.getId()%> name="id" /> <input
-			class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-			type="submit" value="Deletar" />
+		<input type="hidden" value="tarefa" name="entidade" />
+		<input type="hidden" value="<%=t==null?"":t.getId()%>" name="id" />
+		<span style="float:right">
+			<input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Deletar" />
+		</span>
 	</form>
 	<% } %>
+</div>
 </body>
 </html>

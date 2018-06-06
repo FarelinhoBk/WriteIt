@@ -26,9 +26,16 @@
 <body>
 	<jsp:include page="WEB-INF/hdr.jsp" />
 <div>
+<<<<<<< HEAD
+
+
+
+//TODO: Criar botoes de edit, delete?
+=======
 	<%
 	//Se for empresa adiciona linha para incluir
 	if(usu.isEmpresa()) {	%>
+>>>>>>> 5124b5abe26cec8bc0cca1ea864fb7e1b8acb16f
 <a id="task-create" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color-text--white" href="Manutencao?entidade=tarefa">
 <i class="material-icons">add</i>
 </a>

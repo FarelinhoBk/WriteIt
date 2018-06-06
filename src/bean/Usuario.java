@@ -52,4 +52,12 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public boolean isEmpresa() {
+		return this.tipoDeUsuario==2;
+	}
+	public boolean isFreelancer() {
+		return this.tipoDeUsuario==1;
+	}
+	
+	
 }

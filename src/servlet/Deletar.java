@@ -20,7 +20,7 @@ public class Deletar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//Busca entidade
 		String entidade = req.getParameter("entidade");
 		if(entidade==null)throw new ServletException("Sem entidade");
@@ -40,17 +40,18 @@ public class Deletar extends HttpServlet {
 				if(t.getIdCriador()!=usu.getId()) throw new ServletException("Somente o usuario criador pode deletar esse registro");
 				new TarefaDAO().excluir(id);
 			} catch (SQLException e) {
-				throw new ServletException("Tarefa não existe");
+				throw new ServletException("Não conseguiu deletar : " + e.getMessage());
 			}
 			break;
-		case "Aplicao":
+		case "aplicacao":
 			try {
 				Aplicao t = new AplicaoDAO().ler(id);
 				if(t.getIdUsuario()!=usu.getId()) throw new ServletException("Somente o usuario criador pode deletar esse registro");
 				new AplicaoDAO().excluir(id);
 			} catch (SQLException e) {
-				throw new ServletException("Tarefa não existe");
+				throw new ServletException("Não conseguiu deletar : " + e.getMessage());
 			}
+			break;
 		default:
 			throw new ServletException("Entidade inválida");
 		} 

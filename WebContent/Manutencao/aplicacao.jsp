@@ -1,17 +1,23 @@
-<%@page import="bean.Tarefa"%>
-<%@page import="dao.TarefaDAO"%>
+<%@page import="dao.AplicaoDAO"%>
+<%@page import="bean.Aplicao"%>
 <%@page session="true" %>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <% 
-	String id = request.getParameter("id"); 
+	String id = request.getParameter("id");
+	int idTarefa=0; 
 	boolean inclusao=false;
-	Tarefa t;
+	Aplicao a;
 	try { 
-		t = new TarefaDAO().ler(Integer.valueOf(id));
+		a = new AplicaoDAO().ler(Integer.valueOf(id));
 	} catch ( Exception e) {
+		try {
+			idTarefa = Integer.valueOf(request.getParameter("idTarefa")); 
+		} catch ( Exception exp) {
+		    throw new ServletException("Sem ID da tarefa");
+		}
 		inclusao = true;
-		t = null;
+		a = null;
 	}
 	
 %>
@@ -26,16 +32,11 @@
   <body>
     <jsp:include page="/WEB-INF/header.jsp"/>
     <form method="post" action=<%=inclusao?"Incluir":"Alterar"%> >
-      <input type="hidden" value="tarefa" name="entidade" />
-      <input type="hidden" value=<%=t==null?"":t.getId()%> name="id" />
-      <div>Nome:<input type="text" name="nome" value="<%=t==null?"":t.getNome()%>" required/></div>
-      <div>Descricao:<input type="text" name="descricao"  value="<%=t==null?"":t.getDescricao()%>" required/></div>
-      <div>Data Limite:<input type="date" name="dataLimite" value="<%=t==null?"":t.getDataLimite()%>" required></div>
-      <div>Situação:<select name="situacao" value="<%=t==null?"1":t.getSituacao()%>">
-					  <option value=1>aberta</option>
-					  <option value=2>encerrada</option>
-					</select></div>
-      <div>Valor:<input type="number" step="0.01" name="valor" value="<%=t==null?"0":t.getValor()%>" required/></div>
+      <input type="hidden" value="aplicacao" name="entidade" />
+      <input type="hidden" value=<%=a==null?"0":a.getId()%>  name="id" />
+      <input type="hidden" value=<%=a==null?idTarefa:a.getIdTarefa()%> name="idTarefa" />
+      <div>Texto:<input type="text" name="texto"  value="<%=a==null?"":a.getTexto()%>" required/></div>
+      <div>Observação:<input type="text" name="observacoes"  value="<%=a==null?"":a.getObservacoes()%>" required/></div>
       <input type="submit"/>
     </form>
     <% 
@@ -43,7 +44,7 @@
     if(!inclusao){ %> 
     <form method="post" action="Deletar">
       <input type="hidden" value="tarefa" name="entidade" />
-      <input type="hidden" value=<%=t==null?"":t.getId()%> name="id" />
+      <input type="hidden" value=<%=a==null?"":a.getId()%> name="id" />
       <button type="submit">Deletar</button>
     </form>
     <% } %>

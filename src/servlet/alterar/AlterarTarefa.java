@@ -30,14 +30,14 @@ public class AlterarTarefa extends HttpServlet {
   			resp.sendRedirect("login");
   			return;
   		}
-      //Verifica se a tarefa é do funcionário
+      //Verifica se a tarefa ï¿½ do funcionï¿½rio
   		try {
-  			// Lê a tarefa do banco e valida se o ID é igual ao do funcionário atual
+  			// Lï¿½ a tarefa do banco e valida se o ID ï¿½ igual ao do funcionï¿½rio atual
   			if(new TarefaDAO().ler(id).getIdCriador()!=usu.getId()) {
   				throw new ServletException("Somente o usuario criador pode alterar esse registro");
   			}
   		} catch (SQLException e) {
-  			throw new ServletException("Tarefa não existe");
+  			throw new ServletException("Tarefa nï¿½o existe");
   		}
       //Cria a tarefa
     	Tarefa t = new Tarefa();

@@ -20,7 +20,7 @@ try {
             <% if(usu==null) {%>
               <a class="mdl-navigation__link" href="login">Login</a>
             <% } else { %>
-              <a class="mdl-navigation__link" href="usuario.jsp"><%=usu.getNome()%></a>
+              <%=usu.getNome()%>
             <% }%>
           </nav>
         </div>
@@ -32,10 +32,8 @@ try {
           <a class="mdl-navigation__link" href="index.jsp">Home</a>
           <a class="mdl-navigation__link" href="tarefalist.jsp">Tarefas</a>
             <% if(usu!=null) {%>
-            //TODO: Como fazer logout?
-              <a class="mdl-navigation__link" href="login">Logout</a>
-            <% }%>
-
+              <a class="mdl-navigation__link" href="logout">Logout</a>
+            <% } %>
         </nav>
       </div>
     </div>

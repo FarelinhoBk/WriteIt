@@ -2,8 +2,6 @@ package servlet.alterar;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,47 +13,44 @@ import bean.Aplicao;
 import bean.Usuario;
 import dao.AplicaoDAO;
 
-@WebServlet("/Alterar/tarefa")
+@WebServlet("/Alterar/aplicacao")
 public class AlterarAplicao extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	//Busca id
-    	if(req.getParameter("id")==null)throw new ServletException("Sem ID");
-    	int id = Integer.parseInt(req.getParameter("id"));
-  		// Busca o usuario
-  		Usuario usu = (Usuario) req.getSession().getAttribute("user");
-  		if(usu==null) {
-  			resp.sendRedirect("login");
-  			return;
-  		}
-  		//Verifica se a aplicacão é do funcionário
-  		try {
-  			// Lê a aplicação do banco e valida se o ID é igual ao do funcionário atual
-  			if(new AplicaoDAO().ler(id).getIdUsuario()!=usu.getId()) {
-  				throw new ServletException("Somente o usuario criador pode alterar esse registro");
-  			}
-  		} catch (SQLException e) {
-  			throw new ServletException("Aplicação não existe");
-  		}
-      //Carrega os dados da aplicacão
-      Aplicao a = new Aplicao();
-      a.setIdTarefa(Integer.parseInt(req.getParameter("idTarefa")));
-      a.setTexto(req.getParameter("texto"));
-      a.setTexto(req.getParameter("observacoes"));
-      try {
-        a.setDataDeAplicao( new SimpleDateFormat("yyyy-MM-dd").parse((req.getParameter("dataDeAplicacao"))));
-      } catch (ParseException e) {
-        e.printStackTrace();
-      }
-      //Tenta alterar
-    	try {
-        new AplicaoDAO().alterar(a);
-        resp.sendRedirect("tarefalist.jsp");
-        return;
-    	} catch (Exception e) {
-    		throw new ServletException("Nao conseguiu alterar");
-    	}
-    }
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//Busca id
+		if(req.getParameter("id")==null)throw new ServletException("Sem ID");
+		int id = Integer.parseInt(req.getParameter("id"));
+
+		// Busca o usuario
+		Usuario usu = (Usuario) req.getSession().getAttribute("user");
+		if(usu==null) {
+			resp.sendRedirect("login");
+			return;
+		}
+		//Verifica se a aplicacï¿½o ï¿½ do funcionï¿½rio
+		try {
+			// Lï¿½ a aplicaï¿½ï¿½o do banco e valida se o ID ï¿½ igual ao do funcionï¿½rio atual
+			if(new AplicaoDAO().ler(id).getIdUsuario()!=usu.getId()) {
+				throw new ServletException("Somente o usuario criador pode alterar esse registro");
+			}
+		} catch (SQLException e) {
+			throw new ServletException("Aplicaï¿½ï¿½o nï¿½o existe");
+		}
+		//Carrega os dados da aplicacï¿½o
+		Aplicao a = new Aplicao();
+		a.setId(id);
+		a.setIdTarefa(Integer.parseInt(req.getParameter("idTarefa")));
+		a.setTexto(req.getParameter("texto"));
+		a.setObservacoes(req.getParameter("observacoes"));
+		//Tenta alterar
+		try {
+			new AplicaoDAO().alterar(a);
+			resp.sendRedirect("tarefalist.jsp");
+			return;
+		} catch (Exception e) {
+			throw new ServletException("Nao conseguiu alterar:" + e.getMessage());
+		}
+	}
 }

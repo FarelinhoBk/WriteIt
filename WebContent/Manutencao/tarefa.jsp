@@ -23,8 +23,6 @@
 <link rel="stylesheet"	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css">
 <script defer="defer" src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-<link rel="stylesheet" href="path_to/getmdl-select/getmdl-select.min.css">
-<script defer src="path_to/getmdl-select/getmdl-select.min.js"></script>
 </head>
 <body>
 	<div>

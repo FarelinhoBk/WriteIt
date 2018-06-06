@@ -56,6 +56,10 @@
 	<form method="post" action=<%=inclusao?"Incluir":"Alterar"%>>
 		<div id="rectangle">
 
+			<input type="hidden" value="aplicacao" name="entidade" />
+			<input type="hidden" value="<%=a==null?"0":a.getId()%>" name="id" />
+			<input type="hidden" value="<%=a==null?idTarefa:a.getIdTarefa()%>" name="idTarefa" />
+
 
 			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 				<input class="mdl-textfield__input" type="text" name="texto" value="<%=a==null?"":a.getTexto()%>" required>

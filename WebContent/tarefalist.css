@@ -24,7 +24,7 @@
 }
 
   .demo-card-square.mdl-card {
-    width: 320px;
+    width: 360px;
     height: 220px;
     float: left;
     margin: 1rem;
@@ -37,7 +37,7 @@
 
   .demo-card-square > .mdl-card__title {
     color: #fff;
-      background: url('https://getmdl.io/assets/demos/welcome_card.jpg') center / cover;  
+      background: url('https://getmdl.io/assets/demos/welcome_card.jpg') center / cover;
   }
 
   .demo-card-square > .mdl-card__accent {

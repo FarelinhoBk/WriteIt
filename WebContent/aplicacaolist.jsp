@@ -9,22 +9,22 @@
 <%@page session="true" %>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-	//Valida o usuário
+	//Valida o usuï¿½rio
 	if (request.getSession().getAttribute("user") == null) {
 		response.sendRedirect("login");
 		return;
-	} 
+	}
 	Usuario usu = (Usuario) request.getSession().getAttribute("user");
 	//Busca id da tarefa
 	if (request.getParameter("idTarefa") == null)
 		throw new ServletException("Sem ID");
 	int idTarefa = Integer.parseInt(request.getParameter("idTarefa"));
-	
+
 %>
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tarefas</title>
+    <title>Aplicacoes</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css" />
     <script defer="defer" src="https://code.getmdl.io/1.3.0/material.min.js"></script>
@@ -50,8 +50,8 @@
     <tr>
       <th class="mdl-data-table__cell--non-numeric">Criador</th>
       <th>Texto</th>
-      <th>Data de aplicação</th>
-      <th>Observções</th>
+      <th>Data de aplicaï¿½ï¿½o</th>
+      <th>Observï¿½ï¿½es</th>
     </tr>
   </thead>
   <tbody>
@@ -59,7 +59,7 @@
 			List<Aplicao> aplicaos = new AplicaoDAO().lerPorTarefa(idTarefa);
 			for (Aplicao a : aplicaos) {
 				Usuario criador = new UsuarioDAO().ler(a.getIdUsuario());
-				//Se o usuário for um freelancer só deixa ver as proprias aplicações
+				//Se o usuï¿½rio for um freelancer sï¿½ deixa ver as proprias aplicaï¿½ï¿½es
 				if(usu.isFreelancer()&usu.getId()!=criador.getId()) continue;
 		%>
     <tr>
@@ -72,7 +72,7 @@
 				if(usu.isFreelancer()) {	%>
 					<td><a id="task-???" href="Manutencao?entidade=aplicacao&id=<%=a.getId()%>">Alterar</a></td>
 					<td><a id="task-delete" href="Deletar?entidade=aplicacao&id=<%=a.getId()%>">Deletar</a></td>
-		<%		} %> 
+		<%		} %>
     </tr>
 		<%
 			}

@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css" />
     <script defer="defer" src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <link rel="stylesheet" href="./aplicacaolist.css">
+    <link rel="stylesheet" type="text/css" href="aplicacaolist.css">
   </head>
 <body>
 	<jsp:include page="WEB-INF/hdr.jsp" />

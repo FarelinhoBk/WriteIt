@@ -45,7 +45,12 @@ public class Tarefa {
 		return situacao;
 	}
 	public void setSituacao(int situacao) {
-		this.situacao = situacao;
+		if(situacao==0) {
+			this.situacao = 1;
+		} else {
+				this.situacao = situacao;
+		}
+
 	}
 	public double getValor() {
 		return valor;

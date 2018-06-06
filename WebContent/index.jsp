@@ -3,7 +3,7 @@
 <html>
   <head>
     <title>WriteIt</title>
-    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-blue.min.css" />
     <script defer="defer" src="https://code.getmdl.io/1.3.0/material.min.js"></script>

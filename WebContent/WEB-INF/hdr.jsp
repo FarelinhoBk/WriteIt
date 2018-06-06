@@ -9,6 +9,7 @@ try {
 }
 %>
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <link href="./img/favicon.ico" rel="icon" type="image/x-icon" />
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <!-- Title -->

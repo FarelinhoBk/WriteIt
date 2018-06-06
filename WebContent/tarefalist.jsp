@@ -17,32 +17,6 @@
 	<jsp:include page="WEB-INF/hdr.jsp" />
 <div>
 
-//TODO: Nao leu CSS, verificar pasta
-<style>
-    #task-create {
-      position: fixed;
-      display: block;
-      right: 0;
-      bottom: 0;
-      margin-right: 40px;
-      margin-bottom: 40px;
-      z-index: 900;
-    }
-#rectangle {
-  margin: auto;
-  text-align: center;
-  width: 300px;
-  height: 230px;
-  background: white;
-  border-radius: 10px;
-  padding: 10px;
-  position: relative;
-  top: 50%;
-  transform: translateY(50%);
-  -webkit-transform: translateY(50%);
-  -ms-transform: translateY(50%);
-}
-</style>
 
 
 //TODO: Criar botoes de edit, delete?
